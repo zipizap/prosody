@@ -3,6 +3,7 @@ FROM balenalib/rpi-raspbian
 RUN apt-get update \
  && DEBIAN_FRONTEND=noninteractive apt-get install -y \
       libevent-dev `# this is no build dependency, but needed for luaevent` \
+      libidn11 \
       lua5.2 \
       lua-bitop \
       lua-expat \
