@@ -30,8 +30,8 @@ RUN buildDeps='gcc git libc6-dev libidn11-dev liblua5.2-dev libsqlite3-dev libss
  && tar -xzf prosody.tar.gz -C /usr/src/prosody --strip-components=1 \
  && rm prosody.tar.gz \
  && cd /usr/src/prosody && ./configure \
- && make -C /usr/src/prosody \
- && make -C /usr/src/prosody install \
+ && make \
+ && make install \
  && cd / && rm -r /usr/src/prosody \
  \
  && mkdir /usr/src/luarocks \
