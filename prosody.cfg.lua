@@ -12,8 +12,6 @@ s2s_secure_auth = true;
 
 authentication = "internal_hashed";
 
-daemonize = false;
-
 log = {
     {levels = {min = "info"}, to = "console"};
 };
