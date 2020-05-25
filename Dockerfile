@@ -17,6 +17,7 @@ RUN apt-get update \
 ENV PROSODY_VERSION 0.11.5
 ENV PROSODY_DOWNLOAD_URL https://prosody.im/downloads/source/prosody-${PROSODY_VERSION}.tar.gz
 ENV PROSODY_DOWNLOAD_SHA1 fbe27d3203671a6ecd5ba8233dc4c113fd76cd2e
+ENV LUAROCKS_VERSION 3.3.1
 
 RUN buildDeps='gcc git libc6-dev libidn11-dev liblua5.2-dev libsqlite3-dev libssl-dev make unzip' \
  && set -x \
@@ -35,9 +36,9 @@ RUN buildDeps='gcc git libc6-dev libidn11-dev liblua5.2-dev libsqlite3-dev libss
  \
  && mkdir /usr/src/luarocks \
  && cd /usr/src/luarocks \
- && wget https://luarocks.org/releases/luarocks-3.0.4.tar.gz \
- && tar zxpf luarocks-3.0.4.tar.gz \
- && cd luarocks-3.0.4 \
+ && wget https://luarocks.org/releases/luarocks-${LUAROCKS_VERSION}.tar.gz \
+ && tar zxpf luarocks-${LUAROCKS_VERSION}.tar.gz \
+ && cd luarocks-${LUAROCKS_VERSION} \
  && ./configure \
  && sudo make bootstrap \
  && cd / && rm -r /usr/src/luarocks \
