@@ -79,5 +79,5 @@ RUN docker-prosody-module-install \
 USER prosody
 
 ENTRYPOINT ["/entrypoint.sh"]
-CMD ["prosody"]
+CMD ["prosody", "-F"]
 
