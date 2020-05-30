@@ -1,6 +1,6 @@
 # Prosody XMPP server for Raspberry Pi
 
-This docker image provides you with a configured [Prosody](https://prosody.im/) XMPP server. The image is intended to run on a Raspberry Pi (as it is based on _resin/rpi-raspbian_).
+This docker image provides you with a configured [Prosody](https://prosody.im/) XMPP server. The image is intended to run on a Raspberry Pi (as it is based on _balenalib/rpi-raspbian_).
 The server was tested using the Android App [Conversations](https://conversations.im/) and the Desktop client [Gajim](https://gajim.org).
 
 While Conversations got everything set-up out-of-the-box, Gajim was used with the following extensions:
@@ -10,7 +10,10 @@ While Conversations got everything set-up out-of-the-box, Gajim was used with th
 * OMEMO (requires _python-axolotl_ to be installed)
 * Url Image preview
 
+## Table of Contents
+
 - [Prosody XMPP server for Raspberry Pi](#prosody-xmpp-server-for-raspberry-pi)
+  - [Table of Contents](#table-of-contents)
   - [Features](#features)
   - [Requirements](#requirements)
   - [Image Details](#image-details)
