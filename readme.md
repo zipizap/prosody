@@ -4,10 +4,23 @@ This docker image provides you with a configured [Prosody](https://prosody.im/) 
 The server was tested using the Android App [Conversations](https://conversations.im/) and the Desktop client [Gajim](https://gajim.org).
 
 While Conversations got everything set-up out-of-the-box, Gajim was used with the following extensions:
+
 * HttpUpload
 * Off-The-Record Encryption
 * OMEMO (requires _python-axolotl_ to be installed)
 * Url Image preview
+
+- [Prosody XMPP server for Raspberry Pi](#prosody-xmpp-server-for-raspberry-pi)
+  - [Features](#features)
+  - [Requirements](#requirements)
+  - [Image Details](#image-details)
+    - [Ports](#ports)
+    - [Directories](#directories)
+    - [Run](#run)
+    - [Extend](#extend)
+    - [Debugging](#debugging)
+    - [Upgrade](#upgrade)
+  - [Test your server](#test-your-server)
 
 ## Features
 
@@ -15,7 +28,7 @@ While Conversations got everything set-up out-of-the-box, Gajim was used with th
   * SSL certificate required
   * End-to-end encryption required (using [OMEMO](https://conversations.im/omemo/) or [OTR](https://en.wikipedia.org/wiki/Off-the-Record_Messaging))
 * Data storage
-  * SQLite message store 
+  * SQLite message store
   * Configured file upload and image sharing
 * Allows registration
 * Multi-user chats
@@ -76,7 +89,6 @@ services:
     restart: unless-stopped
 ```
 
-
 Boot it via: ```docker-compose up -d```
 
 Inspect logs: ```docker-compose logs -f```
@@ -98,6 +110,7 @@ log = {
     {levels = {min = "info"}, to = "console"};
 };
 ```
+
 with:
 
 ```lua
@@ -105,6 +118,7 @@ log = {
     {levels = {min = "debug"}, to = "console"};
 };
 ```
+
 ### Upgrade
 
 When migrating from 0.10, you need to update the database once:
@@ -114,3 +128,9 @@ docker-compose exec server bash
 prosodyctl mod_storage_sql upgrade
 ```
 
+## Test your server
+
+You can test your server with these websites:
+
+* [IM Observatory](https://www.xmpp.net/)
+* [XMPP Compliance Tester](https://compliance.conversations.im/)
