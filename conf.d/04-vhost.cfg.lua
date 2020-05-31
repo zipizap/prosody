@@ -17,11 +17,12 @@ Component ("proxy." .. domain) "proxy65"
 -- Component (domain) "http_upload"
 -- is set-up via modules_enabled
 
-Component ("muc." .. domain) "muc"
+Component ("conference." .. domain) "muc"
 	name = "Prosody Chatrooms"
 	restrict_room_creation = false
 	max_history_messages = 20
 	modules_enabled = {
-		"muc_mam";
+		"muc_mam",
+		"vcard_muc"
 	}
 

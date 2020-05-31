@@ -102,6 +102,8 @@ There is a helper script that eases installing additional prosody modules: ```do
 
 It downloads the current [prosody-modules](https://hg.prosody.im/prosody-modules/) repository. The specified modules are copied and its name is added to the ```modules_enabled``` variable within ```conf.d/01-modules.cfg.lua```.
 
+There is also ```docker-prosody-module-copy``` which copies the specified modules but does not add them to the ```modules_enabled``` variable within ```conf.d/01-modules.cfg.lua```.
+
 If you need additional configuration just overwrite the respective _cfg.lua_ file or add new ones.
 
 ### Debugging

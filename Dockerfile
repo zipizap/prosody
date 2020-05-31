@@ -77,6 +77,9 @@ RUN docker-prosody-module-install \
         smacks `# stream management (XEP-0198)` \
         throttle_presence `# presence throttling in CSI`
 
+RUN docker-prosody-module-copy \
+        vcard_muc `# XEP-0153: vCard-Based Avatar (MUC)`
+
 USER prosody
 
 ENTRYPOINT ["/entrypoint.sh"]
