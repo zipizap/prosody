@@ -67,7 +67,6 @@ COPY conf.d/*.cfg.lua /usr/local/etc/prosody/conf.d/
 
 COPY docker-prosody-module-* /usr/local/bin/
 RUN docker-prosody-module-install \
-        blocking `# blocking command (XEP-0191)` \
         bookmarks `# XEP-0411: Bookmarks Conversion` \
         carbons `# message carbons (XEP-0280)` \
         csi `# client state indication (XEP-0352)` \
