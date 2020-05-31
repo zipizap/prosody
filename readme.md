@@ -20,10 +20,11 @@ While Conversations got everything set-up out-of-the-box, Gajim was used with th
     - [Ports](#ports)
     - [Directories](#directories)
     - [Run](#run)
-    - [Extend](#extend)
     - [Configuration](#configuration)
+      - [DNS](#dns)
       - [server_contact_info](#server_contact_info)
     - [Debugging](#debugging)
+    - [Extend](#extend)
     - [Upgrade](#upgrade)
   - [Test your server](#test-your-server)
 
@@ -86,7 +87,7 @@ services:
       - "5269:5269"
       - "5281:5281"
     environment:
-      DOMAIN: your.domain.com
+      DOMAIN: domain.tld
     volumes:
       - ./privkey.pem:/usr/local/etc/prosody/certs/prosody.key
       - ./fullchain.pem:/usr/local/etc/prosody/certs/prosody.crt
@@ -98,17 +99,17 @@ Boot it via: ```docker-compose up -d```
 
 Inspect logs: ```docker-compose logs -f```
 
-### Extend
-
-There is a helper script that eases installing additional prosody modules: ```docker-prosody-module-install```
-
-It downloads the current [prosody-modules](https://hg.prosody.im/prosody-modules/) repository. The specified modules are copied and its name is added to the ```modules_enabled``` variable within ```conf.d/01-modules.cfg.lua```.
-
-There is also ```docker-prosody-module-copy``` which copies the specified modules but does not add them to the ```modules_enabled``` variable within ```conf.d/01-modules.cfg.lua```.
-
-If you need additional configuration just overwrite the respective _cfg.lua_ file or add new ones.
-
 ### Configuration
+
+#### DNS
+
+You need these dns record pointing to your server:
+
+* domain.tld
+* conference.domain.tld
+* proxy.domain.tld
+
+where domain.tld is the environment variable DOMAIN.
 
 #### server_contact_info
 
@@ -141,6 +142,16 @@ log = {
     {levels = {min = "debug"}, to = "console"};
 };
 ```
+
+### Extend
+
+There is a helper script that eases installing additional prosody modules: ```docker-prosody-module-install```
+
+It downloads the current [prosody-modules](https://hg.prosody.im/prosody-modules/) repository. The specified modules are copied and its name is added to the ```modules_enabled``` variable within ```conf.d/01-modules.cfg.lua```.
+
+There is also ```docker-prosody-module-copy``` which copies the specified modules but does not add them to the ```modules_enabled``` variable within ```conf.d/01-modules.cfg.lua```.
+
+If you need additional configuration just overwrite the respective _cfg.lua_ file or add new ones.
 
 ### Upgrade
 
