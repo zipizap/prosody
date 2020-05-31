@@ -1,3 +1,5 @@
+local domain = os.getenv("DOMAIN")
+
 contact_info = {
   abuse = { "xmpp:abuse@" .. domain };
   admin = { "xmpp:admin@" .. domain };
