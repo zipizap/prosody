@@ -103,11 +103,12 @@ Inspect logs: ```docker-compose logs -f```
 
 #### DNS
 
-You need these dns record pointing to your server:
+You need these DNS record pointing to your server:
 
 * domain.tld
 * conference.domain.tld
 * proxy.domain.tld
+* upload.domain.tld
 
 where domain.tld is the environment variable DOMAIN.
 

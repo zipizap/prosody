@@ -13,8 +13,8 @@ Component ("proxy." .. domain) "proxy65"
 	proxy65_acl = { domain }
 
 -- Set up a http file upload because proxy65 is not working in muc
--- Component (domain) "http_upload"
--- is set-up via modules_enabled
+Component ("upload." .. domain) "http_upload"
+	http_upload_expire_after = 60 * 60 * 24 * 7 -- a week in seconds
 
 Component ("conference." .. domain) "muc"
 	name = "Prosody Chatrooms"
@@ -24,4 +24,3 @@ Component ("conference." .. domain) "muc"
 		"muc_mam",
 		"vcard_muc"
 	}
-
