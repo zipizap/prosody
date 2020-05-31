@@ -21,6 +21,8 @@ While Conversations got everything set-up out-of-the-box, Gajim was used with th
     - [Directories](#directories)
     - [Run](#run)
     - [Extend](#extend)
+    - [Configuration](#configuration)
+      - [server_contact_info](#server_contact_info)
     - [Debugging](#debugging)
     - [Upgrade](#upgrade)
   - [Test your server](#test-your-server)
@@ -105,6 +107,22 @@ It downloads the current [prosody-modules](https://hg.prosody.im/prosody-modules
 There is also ```docker-prosody-module-copy``` which copies the specified modules but does not add them to the ```modules_enabled``` variable within ```conf.d/01-modules.cfg.lua```.
 
 If you need additional configuration just overwrite the respective _cfg.lua_ file or add new ones.
+
+### Configuration
+
+#### server_contact_info
+
+This module lets you advertise various contact addresses for your XMPP service via XEP-0157.
+It is configured for the following contacts:
+
+* abuse
+* admin
+* feedback
+* sales
+* security
+* support
+
+You can change them in [05-server_contact_info.cfg.lua](./conf.d/05-server_contact_info.cfg.lua).
 
 ### Debugging
 
