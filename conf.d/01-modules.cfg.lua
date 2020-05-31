@@ -42,6 +42,8 @@ modules_enabled = {
     --"watchregistrations"; -- Alert admins of registrations
     --"motd"; -- Send a message to users when they log in
     --"legacyauth"; -- Legacy authentication. Only used by some old clients and bots.
+
+    "server_contact_info"; -- This module lets you advertise various contact addresses for your XMPP service via XEP-0157.
 };
 
 -- These modules are auto-loaded, but should you want
