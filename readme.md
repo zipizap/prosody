@@ -21,7 +21,7 @@ While Conversations got everything set-up out-of-the-box, Gajim was used with th
     - [Directories](#directories)
     - [Run](#run)
     - [Configuration](#configuration)
-    - [Environment variables](#environment-variables)
+      - [Environment variables](#environment-variables)
       - [DNS](#dns)
       - [server_contact_info](#server_contact_info)
     - [Debugging](#debugging)
@@ -102,14 +102,19 @@ Inspect logs: ```docker-compose logs -f```
 
 ### Configuration
 
-### Environment variables
+#### Environment variables
 
 | Variable | Description | Type | Default value |
 | -------- | ----------- | ---- | ------------- |
+| **ALLOW_REGISTRATION** | Whether to allow registration of new accounts via Jabber clients | *optional* | true
 | **DOMAIN** | domain | **required** | null
 | **DOMAIN_HTTP_UPLOAD** | Domain which lets clients upload files over HTTP | *optional* | upload.**DOMAIN**
 | **DOMAIN_MUC** | Domain for Multi-user chat (MUC) for allowing you to create hosted chatrooms/conferences for XMPP users | *optional* | conference.**DOMAIN**
 | **DOMAIN_PROXY** | Domain for SOCKS5 bytestream proxy for server-proxied file transfers | *optional* | proxy.**DOMAIN**
+| **LOG_LEVEL** | Min log level. Change to debug for more information | *optional* | info
+| **C2S_REQUIRE_ENCRYPTION** | Whether to force all client-to-server connections to be encrypted or not | *optional* | true
+| **S2S_REQUIRE_ENCRYPTION** | Whether to force all server-to-server connections to be encrypted or not | *optional* | true
+| **S2S_SECURE_AUTH** | Require encryption and certificate authentication | *optional* | true
 
 #### DNS
 

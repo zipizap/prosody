@@ -5,15 +5,16 @@ admins = {};
 
 use_libevent = true; -- improves performance
 
-allow_registration = true;
+allow_registration = os.getenv("ALLOW_REGISTRATION");
 
-c2s_require_encryption = true;
-s2s_secure_auth = true;
+c2s_require_encryption = os.getenv("C2S_REQUIRE_ENCRYPTION");
+s2s_require_encryption = os.getenv("S2S_REQUIRE_ENCRYPTION");
+s2s_secure_auth = os.getenv("S2S_SECURE_AUTH");
 
 authentication = "internal_hashed";
 
 log = {
-    {levels = {min = "info"}, to = "console"};
+    {levels = {min = os.getenv("LOG_LEVEL")}, to = "console"};
 };
 
 Include "conf.d/*.cfg.lua";
