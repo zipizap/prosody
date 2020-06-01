@@ -21,6 +21,7 @@ While Conversations got everything set-up out-of-the-box, Gajim was used with th
     - [Directories](#directories)
     - [Run](#run)
     - [Configuration](#configuration)
+    - [Environment variables](#environment-variables)
       - [DNS](#dns)
       - [server_contact_info](#server_contact_info)
     - [Debugging](#debugging)
@@ -101,6 +102,15 @@ Inspect logs: ```docker-compose logs -f```
 
 ### Configuration
 
+### Environment variables
+
+| Variable | Description | Type | Default value |
+| -------- | ----------- | ---- | ------------- |
+| **DOMAIN** | domain | **required** | null
+| **DOMAIN_HTTP_UPLOAD** | Domain which lets clients upload files over HTTP | *optional* | upload.**DOMAIN**
+| **DOMAIN_MUC** | Domain for Multi-user chat (MUC) for allowing you to create hosted chatrooms/conferences for XMPP users | *optional* | conference.**DOMAIN**
+| **DOMAIN_PROXY** | Domain for SOCKS5 bytestream proxy for server-proxied file transfers | *optional* | proxy.**DOMAIN**
+
 #### DNS
 
 You need these DNS record pointing to your server:
@@ -124,7 +134,7 @@ It is configured for the following contacts:
 * security
 * support
 
-You can change them in [05-server_contact_info.cfg.lua](./conf.d/05-server_contact_info.cfg.lua).
+You can change them in [05-server_contact_info.cfg.lua](./conf.d/04-server_contact_info.cfg.lua).
 
 ### Debugging
 
