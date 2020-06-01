@@ -50,7 +50,7 @@ RUN buildDeps='gcc git libc6-dev libidn11-dev liblua5.2-dev libsqlite3-dev libss
  \
  && apt-get purge -y --auto-remove $buildDeps
 
-EXPOSE 5000 5222 5269 5347 5280 5281
+EXPOSE 5000 5222 5223 5269 5347 5280 5281
 
 RUN groupadd -r prosody \
  && useradd -r -g prosody prosody \

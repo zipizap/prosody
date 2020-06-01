@@ -19,12 +19,19 @@ While Conversations got everything set-up out-of-the-box, Gajim was used with th
   - [Image Details](#image-details)
     - [Ports](#ports)
     - [Directories](#directories)
+      - [Data](#data)
+      - [Bundled modules](#bundled-modules)
+      - [Additionally installed prosody modules](#additionally-installed-prosody-modules)
+      - [Config](#config)
+      - [SSL certificates](#ssl-certificates)
+        - [Folder structure](#folder-structure)
+        - [Symlinks](#symlinks)
+        - [Permissions](#permissions)
     - [Run](#run)
     - [Configuration](#configuration)
       - [Environment variables](#environment-variables)
       - [DNS](#dns)
       - [server_contact_info](#server_contact_info)
-    - [Debugging](#debugging)
     - [Extend](#extend)
     - [Upgrade](#upgrade)
   - [Test your server](#test-your-server)
@@ -53,6 +60,7 @@ The following ports are exposed:
 
 * 5000: proxy65 port used for file sharing
 * 5222: c2s port (client to server)
+* 5223: c2s legacy ssl port (client to server)
 * 5269: s2s port (server to server)
 * 5347: XMPP component port
 * 5280: BOSH / websocket port
@@ -60,17 +68,60 @@ The following ports are exposed:
 
 ### Directories
 
-* Data: ```/usr/local/var/lib/prosody/```
-  * used for SQLite file
-  * used for HTTP uploads
-  * this is exposed as docker volume
-* Bundled modules: ```/usr/local/lib/prosody/modules/```
-* Additionally installed prosody modules: ```/usr/local/lib/prosody/custom-modules/```
-* Config: ```/usr/local/etc/prosody/```
-  * containing the main config file called ```prosody.cfg.lua```
-  * containing additional config files within ```conf.d/```
-* SSL certificates: ```/usr/local/etc/prosody/certs/```
-  * expects private key to be named ```prosody.key``` and certificate (fullchain) to be ```prosody.crt```
+#### Data
+
+Path: ```/usr/local/var/lib/prosody/```.
+
+* used for SQLite file
+* used for HTTP uploads
+* this is exposed as docker volume
+  
+#### Bundled modules
+
+Path: ```/usr/local/lib/prosody/modules/```.
+
+#### Additionally installed prosody modules
+
+Path: ```/usr/local/lib/prosody/custom-modules/```.
+
+#### Config
+
+Path: ```/usr/local/etc/prosody/```.
+
+* containing the main config file called ```prosody.cfg.lua```
+* containing additional config files within ```conf.d/```
+
+#### SSL certificates
+
+Path: ```/usr/local/etc/prosody/certs/```.
+
+Uses [automatic location](https://prosody.im/doc/certificates#automatic_location) to find your certs.
+
+The http_upload module does not use the same search algorithm for the certificates. See [service certificates](https://prosody.im/doc/certificates#service_certificates).
+
+The setting ssl in [05-vhost.cfg.lua](./conf.d/05-vhost.cfg.lua) configures certificates globally as a fallback.
+
+Which defaults to ```cert/domain.tld/fullchain.pem``` and ```cert/domain.tld/privkey.pem```.
+
+##### Folder structure
+
+An example certificate folder structure could look like this:
+
+TODO
+
+Thats how Let's encrypt certbot does it out of the box.
+
+##### Symlinks
+
+certbot creates the structure and uses symlinks to the actual certificates.
+If you mount them like that prosody somehow does not find them.
+I copied them to a folder named ```certs``` next to my ```docker-compose.yml``` and made sure to use the ```-L``` flag of ```cp```.
+This makes cp follow symbolic links when copying from them.
+For example ```cp -L src dest```.
+
+##### Permissions
+
+TODO
 
 ### Run
 
@@ -90,15 +141,14 @@ services:
     environment:
       DOMAIN: domain.tld
     volumes:
-      - ./privkey.pem:/usr/local/etc/prosody/certs/prosody.key
-      - ./fullchain.pem:/usr/local/etc/prosody/certs/prosody.crt
+      - ./certs:/usr/local/etc/prosody/certs
       - ./data:/usr/local/var/lib/prosody
     restart: unless-stopped
 ```
 
-Boot it via: ```docker-compose up -d```
+Boot it via: ```docker-compose up -d```.
 
-Inspect logs: ```docker-compose logs -f```
+Inspect logs: ```docker-compose logs -f```.
 
 ### Configuration
 
@@ -140,24 +190,6 @@ It is configured for the following contacts:
 * support
 
 You can change them in [05-server_contact_info.cfg.lua](./conf.d/04-server_contact_info.cfg.lua).
-
-### Debugging
-
-Change to verbose logging by replacing the following config lines within ```prosody.cfg.lua```:
-
-```lua
-log = {
-    {levels = {min = "info"}, to = "console"};
-};
-```
-
-with:
-
-```lua
-log = {
-    {levels = {min = "debug"}, to = "console"};
-};
-```
 
 ### Extend
 

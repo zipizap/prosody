@@ -3,10 +3,16 @@ local domain_http_upload = os.getenv("DOMAIN_HTTP_UPLOAD")
 local domain_muc = os.getenv("DOMAIN_MUC")
 local domain_proxy = os.getenv("DOMAIN_PROXY")
 
+-- This is a fallback just for http_upload because service certificates are searched differently
+-- https://prosody.im/doc/certificates#service_certificates
 ssl = {
-	key = "/usr/local/etc/prosody/certs/prosody.key";
-	certificate = "/usr/local/etc/prosody/certs/prosody.crt";
+	certificate = "certs/" .. domain .. "/fullchain.pem";
+	key = "certs/" .. domain .. "/privkey.pem";
 }
+
+-- XEP-0368: SRV records for XMPP over TLS
+-- https://compliance.conversations.im/test/xep0368/
+legacy_ssl_ports = { 5223 }
 
 VirtualHost (domain)
 
