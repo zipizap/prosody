@@ -136,6 +136,7 @@ services:
     ports:
       - "5000:5000"
       - "5222:5222"
+      - "5223:5223"
       - "5269:5269"
       - "5281:5281"
     environment:
@@ -174,6 +175,7 @@ You need these DNS record pointing to your server:
 * conference.domain.tld
 * proxy.domain.tld
 * upload.domain.tld
+* A SRV record for _xmpps-client._tcp.domain.tld for port 5223.
 
 where domain.tld is the environment variable DOMAIN.
 
