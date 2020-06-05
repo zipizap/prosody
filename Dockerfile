@@ -76,6 +76,7 @@ RUN docker-prosody-module-install \
         throttle_presence `# presence throttling in CSI`
 
 RUN docker-prosody-module-copy \
+        cloud_notify `# XEP-0357: Push Notifications` \
         http_upload `# file sharing (XEP-0363)` \
         vcard_muc `# XEP-0153: vCard-Based Avatar (MUC)`
 
