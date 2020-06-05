@@ -2,6 +2,7 @@ local domain = os.getenv("DOMAIN")
 local domain_http_upload = os.getenv("DOMAIN_HTTP_UPLOAD")
 local domain_muc = os.getenv("DOMAIN_MUC")
 local domain_proxy = os.getenv("DOMAIN_PROXY")
+local domain_pubsub = os.getenv("DOMAIN_PUBSUB")
 
 -- This is a fallback just for http_upload because service certificates are searched differently
 -- https://prosody.im/doc/certificates#service_certificates
@@ -33,3 +34,6 @@ Component (domain_muc) "muc"
 Component (domain_proxy) "proxy65"
 	proxy65_address = domain_proxy
 	proxy65_acl = { domain }
+
+-- Implements a XEP-0060 pubsub service.
+Component (domain_pubsub) "pubsub"

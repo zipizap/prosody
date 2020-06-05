@@ -176,6 +176,7 @@ Inspect logs: ```docker-compose logs -f```.
 | **DOMAIN_HTTP_UPLOAD**     | Domain which lets clients upload files over HTTP                                                        | *optional*   | upload.**DOMAIN**     |
 | **DOMAIN_MUC**             | Domain for Multi-user chat (MUC) for allowing you to create hosted chatrooms/conferences for XMPP users | *optional*   | conference.**DOMAIN** |
 | **DOMAIN_PROXY**           | Domain for SOCKS5 bytestream proxy for server-proxied file transfers                                    | *optional*   | proxy.**DOMAIN**      |
+| **DOMAIN_PUBSUB**          | Domain for a XEP-0060 pubsub service                                                                    | *optional*   | pubsub.**DOMAIN**     |
 | **LOG_LEVEL**              | Min log level. Change to debug for more information                                                     | *optional*   | info                  |
 | **C2S_REQUIRE_ENCRYPTION** | Whether to force all client-to-server connections to be encrypted or not                                | *optional*   | true                  |
 | **S2S_REQUIRE_ENCRYPTION** | Whether to force all server-to-server connections to be encrypted or not                                | *optional*   | true                  |
@@ -188,6 +189,7 @@ You need these DNS record pointing to your server:
 * domain.tld
 * conference.domain.tld
 * proxy.domain.tld
+* pubsub.domain.tld
 * upload.domain.tld
 * A SRV record for _xmpps-client._tcp.domain.tld for port 5223.
 
