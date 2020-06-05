@@ -69,6 +69,7 @@ COPY docker-prosody-module-* /usr/local/bin/
 RUN docker-prosody-module-install \
         bookmarks `# XEP-0411: Bookmarks Conversion` \
         carbons `# message carbons (XEP-0280)` \
+        cloud_notify `# XEP-0357: Push Notifications` \
         csi `# client state indication (XEP-0352)` \
         e2e_policy `# require end-2-end encryption` \
         filter_chatstates `# disable "X is typing" type messages` \
@@ -76,7 +77,6 @@ RUN docker-prosody-module-install \
         throttle_presence `# presence throttling in CSI`
 
 RUN docker-prosody-module-copy \
-        cloud_notify `# XEP-0357: Push Notifications` \
         http_upload `# file sharing (XEP-0363)` \
         vcard_muc `# XEP-0153: vCard-Based Avatar (MUC)`
 
