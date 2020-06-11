@@ -1,4 +1,4 @@
-FROM balenalib/rpi-raspbian
+FROM debian:buster-slim
 
 RUN apt-get update \
  && DEBIAN_FRONTEND=noninteractive apt-get install -y \
@@ -41,7 +41,7 @@ RUN buildDeps='gcc git libc6-dev libidn11-dev liblua5.2-dev libsqlite3-dev libss
  && tar zxpf luarocks-${LUAROCKS_VERSION}.tar.gz \
  && cd luarocks-${LUAROCKS_VERSION} \
  && ./configure \
- && sudo make bootstrap \
+ && make bootstrap \
  && cd / && rm -r /usr/src/luarocks \
  \
  && luarocks install luaevent \
