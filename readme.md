@@ -1,7 +1,8 @@
-# Prosody XMPP server for Raspberry Pi
+# Prosody XMPP Docker image
 
-This docker image provides you with a configured [Prosody](https://prosody.im/) XMPP server. The image is intended to run on a Raspberry Pi (as it is based on _balenalib/rpi-raspbian_).
+This docker image provides you with a configured [Prosody](https://prosody.im/) XMPP server. The image is based on `debian:buster-slim`.
 The server was tested using the Android App [Conversations](https://conversations.im/) and the Desktop client [Gajim](https://gajim.org).
+Multiple [architectures](https://hub.docker.com/r/sarasmiseth/prosody/tags) are supported.
 
 While Conversations got everything set-up out-of-the-box, Gajim was used with the following extensions:
 
@@ -12,7 +13,7 @@ While Conversations got everything set-up out-of-the-box, Gajim was used with th
 
 ## Table of Contents
 
-- [Prosody XMPP server for Raspberry Pi](#prosody-xmpp-server-for-raspberry-pi)
+- [Prosody XMPP Docker image](#prosody-xmpp-docker-image)
   - [Table of Contents](#table-of-contents)
   - [Features](#features)
   - [Requirements](#requirements)
@@ -28,6 +29,7 @@ While Conversations got everything set-up out-of-the-box, Gajim was used with th
         - [Symlinks](#symlinks)
         - [Permissions](#permissions)
     - [Run](#run)
+    - [Docker tags](#docker-tags)
     - [Configuration](#configuration)
       - [Environment variables](#environment-variables)
       - [DNS](#dns)
@@ -44,13 +46,11 @@ While Conversations got everything set-up out-of-the-box, Gajim was used with th
 * Data storage
   * SQLite message store
   * Configured file upload and image sharing
-* Allows registration
-* Multi-user chats
+* Multi-user chat (MUC)
 
 ## Requirements
 
 * You need a SSL certificate. I recommend [LetsEncrypt](https://letsencrypt.org/) for that.
-* Your Raspberry Pi should have docker set-up and running. You could use the Raspberry image for [Hypriot OS](http://blog.hypriot.com/downloads/) to get started quickly.
 
 ## Image Details
 
@@ -142,11 +142,12 @@ TODO
 I recommend using a ```docker-compose.yml``` file:
 
 ```yaml
-version: '2'
+version: '3.7'
 
 services:
   server:
-    image: shaula/rpi-prosody:0.10
+    image: sarasmiseth/prosody:v1.0.0
+    restart: unless-stopped
     ports:
       - "5000:5000"
       - "5222:5222"
@@ -158,12 +159,22 @@ services:
     volumes:
       - ./certs:/usr/local/etc/prosody/certs
       - ./data:/usr/local/var/lib/prosody
-    restart: unless-stopped
 ```
 
 Boot it via: ```docker-compose up -d```.
 
 Inspect logs: ```docker-compose logs -f```.
+
+### Docker tags
+
+<https://hub.docker.com/r/sarasmiseth/prosody/tags>
+
+| Tag      | Description                                                                                                                                                                    |
+| -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| edge     | This tag points to the latest version build from the newest [commit](https://github.com/SaraSmiseth/prosody/commits/master) in the master branch.                              |
+| nightly  | This tag points to the latest version build from the newest [commit](https://github.com/SaraSmiseth/prosody/commits/master) in the master branch. It gets rebuild every night. |
+| latest   | This tag points to the latest version build from the latest commit that is tagged in git. See [releases](https://github.com/SaraSmiseth/prosody/releases).                     |
+| *vX.Y.Z* | There is a tag for each [release](https://github.com/SaraSmiseth/prosody/releases).                                                                                            |
 
 ### Configuration
 
@@ -221,7 +232,7 @@ If you need additional configuration just overwrite the respective _cfg.lua_ fil
 
 ### Upgrade
 
-When migrating from 0.10, you need to update the database once:
+When migrating from prosody 0.10, you need to update the database once:
 
 ```bash
 docker-compose exec server bash
