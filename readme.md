@@ -197,6 +197,7 @@ Inspect logs: ```docker-compose logs -f```.
 | **C2S_REQUIRE_ENCRYPTION** | Whether to force all client-to-server connections to be encrypted or not                                | *optional*   | true                  |
 | **S2S_REQUIRE_ENCRYPTION** | Whether to force all server-to-server connections to be encrypted or not                                | *optional*   | true                  |
 | **S2S_SECURE_AUTH**        | Require encryption and certificate authentication                                                       | *optional*   | true                  |
+| **PROSODY_ADMINS**         | Specify who is an administrator. List of adresses. Eg. "me@example.com", "admin@example.net"            | *optional*   | ""                      |
 
 #### DNS
 

@@ -1,7 +1,7 @@
 -- see example config at https://hg.prosody.im/0.9/file/0.9.10/prosody.cfg.lua.dist
 -- easily extendable by putting into different config files within conf.d folder
 
-admins = {};
+admins = { os.getenv("PROSODY_ADMINS") };
 
 use_libevent = true; -- improves performance
 
