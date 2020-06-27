@@ -1,18 +1,8 @@
-#!/bin/sh
+#!/bin/bash
 set -e
 
 source="/usr/src/prosody-modules"
 target="/usr/local/lib/prosody/custom-modules"
-
-srcExists=
-if [ -d ${source} ]; then
-	srcExists=1
-fi
-docker-prosody-module-source pullTo ${source}
-
-if [ -z "$srcExists" ]; then
-	touch ${source}/.docker-delete-me
-fi
 
 cd ${source}
 
@@ -49,7 +39,3 @@ for ext in $exts; do
 	echo " - copying to ${target}"
 	cp -r "${source}/mod_${ext}" "${target}/"
 done
-
-if [ -e ${source}/.docker-delete-me ]; then
-	docker-prosody-module-source deleteFrom ${source}
-fi

@@ -1,19 +1,9 @@
-#!/bin/sh
+#!/bin/bash
 set -e
 
 source="/usr/src/prosody-modules"
 target="/usr/local/lib/prosody/custom-modules"
 config="/usr/local/etc/prosody/conf.d/01-modules.cfg.lua"
-
-srcExists=
-if [ -d ${source} ]; then
-	srcExists=1
-fi
-docker-prosody-module-source pullTo ${source}
-
-if [ -z "$srcExists" ]; then
-	touch ${source}/.docker-delete-me
-fi
 
 cd ${source}
 
@@ -54,7 +44,3 @@ for ext in $exts; do
 	new_config=$(cat "${config}" | module="${ext}" perl -0pe 's/(modules_enabled[ ]*=[ ]*{[^}]*)};/$1\n\t"$ENV{module}";\n};/')
 	echo "${new_config}" > "${config}"
 done
-
-if [ -e ${source}/.docker-delete-me ]; then
-	docker-prosody-module-source deleteFrom ${source}
-fi
