@@ -67,9 +67,8 @@ COPY conf.d/*.cfg.lua /usr/local/etc/prosody/conf.d/
 
 COPY *.bash /usr/local/bin/
 
-RUN download-prosody-modules.bash
-
-RUN docker-prosody-module-install.bash \
+RUN download-prosody-modules.bash \
+ && docker-prosody-module-install.bash \
         bookmarks `# XEP-0411: Bookmarks Conversion` \
         carbons `# message carbons (XEP-0280)` \
         cloud_notify `# XEP-0357: Push Notifications` \
@@ -79,9 +78,8 @@ RUN docker-prosody-module-install.bash \
         smacks `# stream management (XEP-0198)` \
         throttle_presence `# presence throttling in CSI` \
         http_upload `# file sharing (XEP-0363)` \
-        vcard_muc `# XEP-0153: vCard-Based Avatar (MUC)`
-
-RUN rm -rf "/usr/src/prosody-modules"
+        vcard_muc `# XEP-0153: vCard-Based Avatar (MUC)` \
+ && rm -rf "/usr/src/prosody-modules"
 
 USER prosody
 
