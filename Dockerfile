@@ -77,9 +77,7 @@ RUN docker-prosody-module-install.bash \
         e2e_policy `# require end-2-end encryption` \
         filter_chatstates `# disable "X is typing" type messages` \
         smacks `# stream management (XEP-0198)` \
-        throttle_presence `# presence throttling in CSI`
-
-RUN docker-prosody-module-copy.bash \
+        throttle_presence `# presence throttling in CSI` \
         http_upload `# file sharing (XEP-0363)` \
         vcard_muc `# XEP-0153: vCard-Based Avatar (MUC)`
 

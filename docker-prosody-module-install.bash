@@ -40,7 +40,10 @@ for ext in $exts; do
 	echo " - copying to ${target}"
 	cp -r "${source}/mod_${ext}" "${target}/"
 
-	echo " - enabling within ${config}"
-	new_config=$(cat "${config}" | module="${ext}" perl -0pe 's/(modules_enabled[ ]*=[ ]*{[^}]*)};/$1\n\t"$ENV{module}";\n};/')
-	echo "${new_config}" > "${config}"
+	# Skip this if the modules should not be added to modules_enabled.
+	if [ "$ext" != "http_upload" ] && [ "$ext" != "vcard_muc" ] ; then
+		echo " - enabling within ${config}"
+		new_config=$(cat "${config}" | module="${ext}" perl -0pe 's/(modules_enabled[ ]*=[ ]*{[^}]*)};/$1\n\t"$ENV{module}";\n};/')
+		echo "${new_config}" > "${config}"
+	fi
 done
