@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+* Enable "announce" and "lastactivity" modules.
 * Add badges to README. Fixes #5.
 * Update readme. Fixes #2
 * Add PROSODY_ADMINS to specify who is an administrator. Fixes #7

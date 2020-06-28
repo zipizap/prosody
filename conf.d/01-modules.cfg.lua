@@ -37,12 +37,12 @@ modules_enabled = {
     -- Other specific functionality
     "posix"; -- POSIX functionality, sends server to background, enables syslog, etc.
     --"groups"; -- Shared roster support
-    --"announce"; -- Send announcement to all online users
+    "announce"; -- Send announcement to all online users
     --"welcome"; -- Welcome users who register accounts
     --"watchregistrations"; -- Alert admins of registrations
     --"motd"; -- Send a message to users when they log in
     --"legacyauth"; -- Legacy authentication. Only used by some old clients and bots.
-
+    "lastactivity";
     "server_contact_info"; -- This module lets you advertise various contact addresses for your XMPP service via XEP-0157.
 };
 
