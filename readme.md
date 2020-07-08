@@ -7,7 +7,7 @@
 
 This docker image provides you with a configured [Prosody](https://prosody.im/) XMPP server. The image is based on `debian:buster-slim`.
 The server was tested using the Android App [Conversations](https://conversations.im/) and the Desktop client [Gajim](https://gajim.org).
-Multiple [architectures](https://hub.docker.com/r/sarasmiseth/prosody/tags) are supported.
+Multiple [architectures](https://hub.docker.com/r/sarasmiseth/prosody/tags) are supported. I use it on my raspberry pi 4.
 
 While Conversations got everything set-up out-of-the-box, Gajim was used with the following extensions:
 
@@ -102,11 +102,9 @@ Path: ```/usr/local/etc/prosody/certs/```.
 
 Uses [automatic location](https://prosody.im/doc/certificates#automatic_location) to find your certs.
 
-The http_upload module does not use the same search algorithm for the certificates. See [service certificates](https://prosody.im/doc/certificates#service_certificates).
+The http_upload module and the legacy_ssl module do not use the same search algorithm for the certificates. See [service certificates](https://prosody.im/doc/certificates#service_certificates).
 
-The setting ssl in [05-vhost.cfg.lua](./conf.d/05-vhost.cfg.lua) configures certificates globally as a fallback.
-
-Which defaults to ```cert/domain.tld/fullchain.pem``` and ```cert/domain.tld/privkey.pem```.
+The settings https_ssl and legacy_ssl_ssl in [05-vhost.cfg.lua](./conf.d/05-vhost.cfg.lua) configures the certificates to ```certs/domain.tld/fullchain.pem``` and ```certs/domain.tld/privkey.pem``` for legacy_ssl and to ```certs/DOMAIN_HTTP_UPLOAD/fullchain.pem``` and ```certs/DOMAIN_HTTP_UPLOAD/privkey.pem``` for http_upload where DOMAIN_HTTP_UPLOAD is an environtment variable.
 
 ##### Folder structure
 
