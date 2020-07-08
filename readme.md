@@ -138,7 +138,7 @@ For example ```cp -L src dest```.
 
 ##### Permissions
 
-TODO
+See official [documentation](https://prosody.im/doc/certificates#permissions) for more information.
 
 ### Run
 

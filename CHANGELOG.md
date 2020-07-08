@@ -8,6 +8,7 @@
   * <https://prosody.im/doc/ports#ssl_configuration>
 * Add badges to README. Fixes #5.
 * Update README. Add information for certificate permissions.
+* Add link to official documentation on certificate permissions to README. Related to #3
 
 ## v1.0.0
 
