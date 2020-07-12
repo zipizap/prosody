@@ -1,6 +1,6 @@
 # Prosody XMPP Docker image
 
-![Docker](https://github.com/SaraSmiseth/prosody/workflows/Docker/badge.svg?branch=master)
+![Docker](https://github.com/SaraSmiseth/prosody/workflows/Docker/badge.svg?branch=dev)
 [![docker image](https://images.microbadger.com/badges/image/sarasmiseth/prosody:latest.svg)](https://microbadger.com/images/sarasmiseth/prosody:latest)
 [![docker pulls](https://img.shields.io/docker/pulls/sarasmiseth/prosody.svg)](https://hub.docker.com/r/sarasmiseth/prosody/)
 [![docker stars](https://img.shields.io/docker/stars/sarasmiseth/prosody.svg)](https://hub.docker.com/r/sarasmiseth/prosody/)
@@ -172,12 +172,12 @@ Inspect logs: ```docker-compose logs -f```.
 
 <https://hub.docker.com/r/sarasmiseth/prosody/tags>
 
-| Tag      | Description                                                                                                                                                                    |
-| -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| edge     | This tag points to the latest version build from the newest [commit](https://github.com/SaraSmiseth/prosody/commits/master) in the master branch.                              |
-| nightly  | This tag points to the latest version build from the newest [commit](https://github.com/SaraSmiseth/prosody/commits/master) in the master branch. It gets rebuild every night. |
-| latest   | This tag points to the latest version build from the latest commit that is tagged in git. See [releases](https://github.com/SaraSmiseth/prosody/releases).                     |
-| *vX.Y.Z* | There is a tag for each [release](https://github.com/SaraSmiseth/prosody/releases).                                                                                            |
+| Tag      | Description                                                                                                                                                              |
+| -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| edge     | This tag points to the latest version build from the newest [commit](https://github.com/SaraSmiseth/prosody/commits/dev) in the dev branch.                              |
+| nightly  | This tag points to the latest version build from the newest [commit](https://github.com/SaraSmiseth/prosody/commits/dev) in the dev branch. It gets rebuild every night. |
+| latest   | This tag points to the latest version build from the latest commit that is tagged in git. See [releases](https://github.com/SaraSmiseth/prosody/releases).               |
+| *vX.Y.Z* | There is a tag for each [release](https://github.com/SaraSmiseth/prosody/releases).                                                                                      |
 
 ### Configuration
 
@@ -195,7 +195,7 @@ Inspect logs: ```docker-compose logs -f```.
 | **C2S_REQUIRE_ENCRYPTION** | Whether to force all client-to-server connections to be encrypted or not                                | *optional*   | true                  |
 | **S2S_REQUIRE_ENCRYPTION** | Whether to force all server-to-server connections to be encrypted or not                                | *optional*   | true                  |
 | **S2S_SECURE_AUTH**        | Require encryption and certificate authentication                                                       | *optional*   | true                  |
-| **PROSODY_ADMINS**         | Specify who is an administrator. List of adresses. Eg. "me@example.com", "admin@example.net"            | *optional*   | ""                      |
+| **PROSODY_ADMINS**         | Specify who is an administrator. List of adresses. Eg. "me@example.com", "admin@example.net"            | *optional*   | ""                    |
 
 #### DNS
 

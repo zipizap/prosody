@@ -1,6 +1,7 @@
 # Changelog
 
 ## Unreleased
+* Replace "master" with "dev".
 
 ## v1.1.0
 
