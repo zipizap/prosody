@@ -1,6 +1,12 @@
 # Changelog
 
 ## Unreleased
+
+* Nothing yet
+
+## v1.1.1
+
+* Updated to Prosody version [0.11.6](https://blog.prosody.im/prosody-0.11.6-released/).
 * Replace "master" with "dev".
 
 ## v1.1.0
