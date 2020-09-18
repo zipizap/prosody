@@ -2,7 +2,7 @@
 
 ## Unreleased
 
-* Nothing yet
+* Made 04-server_contact_info.cfg.lua configurable with ENV variables. See [#4](https://github.com/SaraSmiseth/prosody/issues/4).
 
 ## v1.1.1
 

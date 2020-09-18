@@ -183,19 +183,25 @@ Inspect logs: ```docker-compose logs -f```.
 
 #### Environment variables
 
-| Variable                   | Description                                                                                             | Type         | Default value         |
-| -------------------------- | ------------------------------------------------------------------------------------------------------- | ------------ | --------------------- |
-| **ALLOW_REGISTRATION**     | Whether to allow registration of new accounts via Jabber clients                                        | *optional*   | true                  |
-| **DOMAIN**                 | domain                                                                                                  | **required** | null                  |
-| **DOMAIN_HTTP_UPLOAD**     | Domain which lets clients upload files over HTTP                                                        | *optional*   | upload.**DOMAIN**     |
-| **DOMAIN_MUC**             | Domain for Multi-user chat (MUC) for allowing you to create hosted chatrooms/conferences for XMPP users | *optional*   | conference.**DOMAIN** |
-| **DOMAIN_PROXY**           | Domain for SOCKS5 bytestream proxy for server-proxied file transfers                                    | *optional*   | proxy.**DOMAIN**      |
-| **DOMAIN_PUBSUB**          | Domain for a XEP-0060 pubsub service                                                                    | *optional*   | pubsub.**DOMAIN**     |
-| **LOG_LEVEL**              | Min log level. Change to debug for more information                                                     | *optional*   | info                  |
-| **C2S_REQUIRE_ENCRYPTION** | Whether to force all client-to-server connections to be encrypted or not                                | *optional*   | true                  |
-| **S2S_REQUIRE_ENCRYPTION** | Whether to force all server-to-server connections to be encrypted or not                                | *optional*   | true                  |
-| **S2S_SECURE_AUTH**        | Require encryption and certificate authentication                                                       | *optional*   | true                  |
-| **PROSODY_ADMINS**         | Specify who is an administrator. List of adresses. Eg. "me@example.com", "admin@example.net"            | *optional*   | ""                    |
+| Variable                         | Description                                                                                                          | Type         | Default value              |
+| -------------------------------- | -------------------------------------------------------------------------------------------------------------------- | ------------ | -------------------------- |
+| **ALLOW_REGISTRATION**           | Whether to allow registration of new accounts via Jabber clients                                                     | *optional*   | true                       |
+| **DOMAIN**                       | domain                                                                                                               | **required** | null                       |
+| **DOMAIN_HTTP_UPLOAD**           | Domain which lets clients upload files over HTTP                                                                     | *optional*   | upload.**DOMAIN**          |
+| **DOMAIN_MUC**                   | Domain for Multi-user chat (MUC) for allowing you to create hosted chatrooms/conferences for XMPP users              | *optional*   | conference.**DOMAIN**      |
+| **DOMAIN_PROXY**                 | Domain for SOCKS5 bytestream proxy for server-proxied file transfers                                                 | *optional*   | proxy.**DOMAIN**           |
+| **DOMAIN_PUBSUB**                | Domain for a XEP-0060 pubsub service                                                                                 | *optional*   | pubsub.**DOMAIN**          |
+| **LOG_LEVEL**                    | Min log level. Change to debug for more information                                                                  | *optional*   | info                       |
+| **C2S_REQUIRE_ENCRYPTION**       | Whether to force all client-to-server connections to be encrypted or not                                             | *optional*   | true                       |
+| **S2S_REQUIRE_ENCRYPTION**       | Whether to force all server-to-server connections to be encrypted or not                                             | *optional*   | true                       |
+| **S2S_SECURE_AUTH**              | Require encryption and certificate authentication                                                                    | *optional*   | true                       |
+| **SERVER_CONTACT_INFO_ABUSE**    | A list of strings. Each string should be an URI. See [here](https://prosody.im/doc/modules/mod_server_contact_info). | *optional*   | "xmpp:abuse@**DOMAIN**"    |
+| **SERVER_CONTACT_INFO_ADMIN**    | A list of strings. Each string should be an URI. See [here](https://prosody.im/doc/modules/mod_server_contact_info). | *optional*   | "xmpp:admin@**DOMAIN**"    |
+| **SERVER_CONTACT_INFO_FEEDBACK** | A list of strings. Each string should be an URI. See [here](https://prosody.im/doc/modules/mod_server_contact_info). | *optional*   | "xmpp:feedback@**DOMAIN**" |
+| **SERVER_CONTACT_INFO_SALES**    | A list of strings. Each string should be an URI. See [here](https://prosody.im/doc/modules/mod_server_contact_info). | *optional*   | "xmpp:sales@**DOMAIN**"    |
+| **SERVER_CONTACT_INFO_SECURITY** | A list of strings. Each string should be an URI. See [here](https://prosody.im/doc/modules/mod_server_contact_info). | *optional*   | "xmpp:security@**DOMAIN**" |
+| **SERVER_CONTACT_INFO_SUPPORT**  | A list of strings. Each string should be an URI. See [here](https://prosody.im/doc/modules/mod_server_contact_info). | *optional*   | "xmpp:support@**DOMAIN**"  |
+| **PROSODY_ADMINS**               | Specify who is an administrator. List of adresses. Eg. "me@example.com", "admin@example.net"                         | *optional*   | ""                         |
 
 #### DNS
 
