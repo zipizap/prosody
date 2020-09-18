@@ -2,7 +2,7 @@
 
 ## Unreleased
 
-* Nothing yet
+* Added and enabled module [mod_pastebin](https://modules.prosody.im/mod_pastebin.html) for MUC rooms and normal chat.
 
 ## v1.1.1
 

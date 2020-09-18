@@ -31,6 +31,7 @@ Component (domain_muc) "muc"
 	max_history_messages = 20
 	modules_enabled = {
 		"muc_mam",
+		"pastebin",
 		"vcard_muc"
 	}
 

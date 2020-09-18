@@ -75,6 +75,7 @@ RUN download-prosody-modules.bash \
         csi `# client state indication (XEP-0352)` \
         e2e_policy `# require end-2-end encryption` \
         filter_chatstates `# disable "X is typing" type messages` \
+        pastebin `# https://modules.prosody.im/mod_pastebin.html` \
         smacks `# stream management (XEP-0198)` \
         throttle_presence `# presence throttling in CSI` \
         http_upload `# file sharing (XEP-0363)` \
