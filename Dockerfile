@@ -79,6 +79,7 @@ RUN download-prosody-modules.bash \
         throttle_presence `# presence throttling in CSI` \
         http_upload `# file sharing (XEP-0363)` \
         vcard_muc `# XEP-0153: vCard-Based Avatar (MUC)` \
+        conversejs \
  && rm -rf "/usr/src/prosody-modules"
 
 USER prosody

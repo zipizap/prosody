@@ -44,6 +44,9 @@ modules_enabled = {
     --"legacyauth"; -- Legacy authentication. Only used by some old clients and bots.
     "lastactivity";
     "server_contact_info"; -- This module lets you advertise various contact addresses for your XMPP service via XEP-0157.
+
+    -- :)
+    "conversejs";
 };
 
 -- These modules are auto-loaded, but should you want
