@@ -1,20 +1,6 @@
 #!/bin/bash
 set -e
 
-if [[ "$1" != "prosody" ]]; then
-    exec prosodyctl $*
-    exit 0;
-fi
-
-if [ "$LOCAL" -a "$PASSWORD" -a "$DOMAIN" ] ; then
-    prosodyctl register $LOCAL $DOMAIN $PASSWORD
-fi
-
-if [ -z "$DOMAIN" ]; then
-  echo "[ERROR] DOMAIN must be set!"
-  exit 1
-fi
-
 export ALLOW_REGISTRATION=${ALLOW_REGISTRATION:-true}
 export DOMAIN_HTTP_UPLOAD=${DOMAIN_HTTP_UPLOAD:-"upload.$DOMAIN"}
 export DOMAIN_MUC=${DOMAIN_MUC:-"conference.$DOMAIN"}
@@ -33,5 +19,20 @@ export SERVER_CONTACT_INFO_SALES=${SERVER_CONTACT_INFO_SALES:-"xmpp:sales@$DOMAI
 export SERVER_CONTACT_INFO_SECURITY=${SERVER_CONTACT_INFO_SECURITY:-"xmpp:security@$DOMAIN"}
 export SERVER_CONTACT_INFO_SUPPORT=${SERVER_CONTACT_INFO_SUPPORT:-"xmpp:support@$DOMAIN"}
 export PROSODY_ADMINS=${PROSODY_ADMINS:-""}
+
+if [[ "$1" != "prosody" ]]; then
+    exec prosodyctl $*
+    exit 0;
+fi
+
+if [ "$LOCAL" -a "$PASSWORD" -a "$DOMAIN" ] ; then
+    prosodyctl register $LOCAL $DOMAIN $PASSWORD
+fi
+
+if [ -z "$DOMAIN" ]; then
+  echo "[ERROR] DOMAIN must be set!"
+  exit 1
+fi
+
 
 exec "$@"
