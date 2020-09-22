@@ -100,6 +100,7 @@ openssl x509 -req -in cert.csr -CA myCA.rootCert.pem -CAkey myCA.privKey.key -CA
 set +x
 rm cert.csr config.ext myCA.rootCert.srl
 p Join cert.crt with myCA.rootCert.pem to form fullchain.pem
+chmod 666 fullchain.pem
 cat cert.crt myCA.rootCert.pem > fullchain.pem
 
 p
