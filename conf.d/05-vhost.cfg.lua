@@ -28,7 +28,7 @@ Component (domain_http_upload) "http_upload"
 Component (domain_muc) "muc"
 	name = "Prosody Chatrooms"
 	restrict_room_creation = false
-	max_history_messages = 20
+	max_history_messages = 20000
 	modules_enabled = {
 		"muc_mam",
 		"vcard_muc"

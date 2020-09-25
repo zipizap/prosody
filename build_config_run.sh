@@ -88,6 +88,12 @@ stop_container() {
   fi
 }
 
+delete_image() {
+  if (docker image list | grep privprosody &>/dev/null)
+  then 
+    docker image rm privprosody
+  fi
+}
 
 show_url_and_open_webclient() {
   shw_info "############ show_url_and_open_webclient ################"
@@ -107,12 +113,18 @@ EOT
   DOMAIN="${1}"
 
   cd "${__dir}"
+
+  # cleanup old c8r and image
+  stop_container
+  delete_image
+
+  # from build to run
   build_image
   generate_certs
   clean_data
   run_detach_container
   stop_container
-  register_users admin user1 user2
+  register_users admin user{1..3}
   run_detach_container
   show_url_and_open_webclient
   shw_info "################# FINISHED SUCCESSFULLY! ######################"
