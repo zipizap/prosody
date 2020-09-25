@@ -17,4 +17,8 @@ log = {
     {levels = {min = os.getenv("LOG_LEVEL")}, to = "console"};
 };
 
+--- 
+http_upload_file_size_limit = 500971520
+http_max_content_size = 701457280
+
 Include "conf.d/*.cfg.lua";
