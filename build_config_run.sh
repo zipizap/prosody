@@ -124,7 +124,7 @@ EOT
   clean_data
   run_detach_container
   stop_container
-  register_users admin user{1..3}
+  register_users admin bot user{1..3}
   run_detach_container
   show_url_and_open_webclient
   shw_info "################# FINISHED SUCCESSFULLY! ######################"
